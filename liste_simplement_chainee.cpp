@@ -60,9 +60,9 @@ void ajoutFin(LinkedList *list, int val)
         //positionnement à la fin de la liste
         while(cur ->suivant != nullptr)
             {
-                cur++;
+                cur = cur->suivant;
             };
-        cur->suivant=cellule->suivant;
+        cur->suivant=cellule;
         cellule->suivant=nullptr;
         list->taille+=1;
     };
@@ -73,6 +73,7 @@ void affiche(LinkedList list)
         cur= list.tete;
         while(cur->suivant != nullptr)
             {
+                cur= cur->suivant;
                 cout<<cur->valeur<<endl;
                 //cur++;
             }
