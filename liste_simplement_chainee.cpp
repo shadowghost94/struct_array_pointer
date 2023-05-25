@@ -67,6 +67,33 @@ void ajoutFin(LinkedList *list, int val)
         list->taille+=1;
     };
 
+
+void ajoutPosition(LinkedList *list, int position, int val)
+    {
+        int i =0;     //compteur de position
+
+        //création de la nouvelle cellule
+        Node *cellule= new Node;
+        cellule->valeur = val;
+
+        //création du current
+        Node *current= new Node;
+        current =list->tete;
+
+        //positionnement du current à la position val
+        while(i < position)
+            {
+                current= current->suivant;
+                i++;
+            };
+
+/*modification du contenu des pointeurs de tel sorte que le pointeur suivant à la position n-1 contienne l'adresse mémoire de la nouvelle cellule à ajouter*/
+
+        cellule -> suivant= current->suivant;
+        current->suivant= cellule;
+        list -> taille +=1;
+
+    };
 void affiche(LinkedList list)
     {
         Node *cur= new Node;
@@ -87,4 +114,12 @@ int main()
         ajoutDebut(&list1, 5);
         ajoutFin(&list1, 7);
         affiche(list1);
+
+        ajoutPosition(&list1, 2, 6);
+        affiche(list1);
+
+        ajoutPosition(&list1, 3, 8);
+        affiche(list1);
+
+        return 0;
     }
